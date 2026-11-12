@@ -1,0 +1,33 @@
+{
+  "name": "nest-graceful-shutdown-repro",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "description": "Handlers in flight lose their reply when a NestJS microservice closes (Redis, MQTT, RabbitMQ, NATS, TCP)",
+  "scripts": {
+    "brokers": "docker compose up -d",
+    "brokers:down": "docker compose down",
+    "single": "tsx src/single.ts",
+    "two-instances": "tsx src/two-instances.ts",
+    "http": "tsx src/http.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nats-io/transport-node": "^3.4.0",
+    "@nestjs/common": "12.5.0",
+    "@nestjs/core": "12.5.0",
+    "@nestjs/microservices": "12.5.0",
+    "@nestjs/platform-express": "12.5.0",
+    "amqp-connection-manager": "^5.0.0",
+    "amqplib": "^2.2.0",
+    "ioredis": "^5.8.0",
+    "mqtt": "^5.15.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0"
+  }
+}
